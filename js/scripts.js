@@ -44,7 +44,7 @@ $(document).ready(function() {
     var sentence = ($("input#sentence").val());
     var result = pigLatin(sentence);
 
-    $(".sentence").text(sentence);
+    // $(".sentence").text(sentence);
     $(".result").text(result);
 
     $("#result").show();
