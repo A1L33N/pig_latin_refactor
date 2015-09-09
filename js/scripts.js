@@ -1,5 +1,4 @@
-var pigLatin = function(string) {
-};
+
 
 var translateVowels = function(string) {
   var newArray = string.split(" ");
@@ -17,7 +16,7 @@ var translateVowels = function(string) {
 };
 
 var translateConsonants = function(string) {
-  var newArray = string.split(" ");
+  var newArray = (string.toLowerCase().split(" "));
   var translateArray = [];
   var vowels = ['a', 'e', 'i', 'o', 'u'];
   for (var i = 0; i < newArray.length; i++) {
@@ -28,7 +27,27 @@ var translateConsonants = function(string) {
     } else {
       translateArray.push(newArray[i]);
     }
-debugger
+
   }
-  return translateArray;
+  return translateArray.join(" ");
 };
+
+var pigLatin = function(string) {
+  var newString = translateVowels(string);
+  var finalString = translateConsonants(newString);
+  return finalString;
+};
+// string.match(/[aeiou]/)
+
+$(document).ready(function() {
+  $("form#pig-latin").submit(function(event) {
+    var sentence = ($("input#sentence").val());
+    var result = pigLatin(sentence);
+
+    $(".sentence").text(sentence);
+    $(".result").text(result);
+
+    $("#result").show();
+    event.preventDefault();
+  })
+})
